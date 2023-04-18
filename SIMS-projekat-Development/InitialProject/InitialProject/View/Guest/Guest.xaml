@@ -1,0 +1,95 @@
+﻿<Window x:Class="InitialProject.View.Guest.Guest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.View.Guest"
+        mc:Ignorable="d"
+        Title="Guest" Height="450" Width="800"
+        ResizeMode="CanResizeWithGrip">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="180.667" />
+                <ColumnDefinition Width="19.333" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                x:Name="AccommodationStackPannel"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Orientation="Vertical" Margin="0,-53,0,0">
+
+                <Label>Name</Label>
+                <TextBox
+                    x:Name="NameSearch"
+                    Margin="3"
+                    />
+
+                <Label>Type</Label>
+                <ComboBox SelectedIndex="3" Margin="3" x:Name="TypeSearch" SelectedValuePath="Tag">
+                    <ComboBoxItem Content="Apartment" />
+                    <ComboBoxItem Content="Hut" />
+                    <ComboBoxItem Content="House"/>
+                    <ComboBoxItem Content="Any"/>
+                </ComboBox>
+
+                <Label>Country</Label>
+                <TextBox
+                    x:Name="CountrySearch"
+                    Margin="3"    
+                />
+
+                <Label>City</Label>
+                <TextBox
+                    x:Name="CitySearch"
+                    Margin="3"
+                />
+
+                <Label Content="Number of Guests:" Width="150" HorizontalAlignment="Left"/>
+                <TextBox PreviewTextInput="NumberOfGuests" x:Name="NumberOfGuestsSearch" MaxLength="2" Width="40" Margin="70,0,0,0"/>
+
+                <Label>
+                    Reserve for:
+                </Label>
+                <TextBox PreviewTextInput="ResationDaysText" x:Name="ReservationDaysSearch" MaxLength="2" Width="40" Margin="70,0,0,0"/>
+                
+                <Button 
+                x:Name="ShowSearch"
+                Click="SearchAccommodation_Click" Margin="5" 
+                Height="30" Width="106">
+                    Search
+                </Button>
+
+                <Button
+                    Click="OpenReserveView"
+                    Height="30" Width="106" Margin="5">
+                    Reserve
+                </Button>
+            </StackPanel>
+
+
+            <DataGrid x:Name="AccommodationsList" IsReadOnly="True" Margin="10,-37,10,10" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding AccommodationType}" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Number Of Guests" Binding="{Binding MaxNumberOfGuests}" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Minimal Reservation Period" Binding="{Binding MinimalReservationPeriod}" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Cancel Period" Binding="{Binding CancelPeriod}" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="Country" Binding="{Binding Country}" FontWeight="Bold"/>
+                    <DataGridTextColumn Header="City" Binding="{Binding City}" FontWeight="Bold"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+    </Grid>
+</Window>

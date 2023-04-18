@@ -1,0 +1,110 @@
+﻿<Window x:Class="InitialProject.View.Tourist.BookTour"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.View.Tourist"
+        mc:Ignorable="d"
+        Title="BookTour" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Button 
+                Grid.Column="2"
+                x:Name="Book"
+                Click="BookTour_Click">
+                Book Tour
+            </Button>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="180.667" />
+                <ColumnDefinition Width="19.333" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                x:Name="BookTourStackPannel"
+                Grid.ColumnSpan="3"
+                Orientation="Vertical" Margin="490,0,0,0">
+
+                <Label>Tour Id</Label>
+                <TextBox
+                    x:Name="TourIdBook"
+                    Margin="3"
+                    />
+
+                <Label>Number of Tourists</Label>
+                <TextBox
+                    x:Name="NumberOfTouristsBook"
+                    Margin="3"
+                    />
+
+                <Label>Voucher Id</Label>
+                <TextBox
+                    x:Name="VoucherIdBook"
+                    Margin="3"
+                    />
+                <ListBox x:Name="ActiveVouchers" d:ItemsSource="{d:SampleData ItemCount=5}" Width="301">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Button>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Id}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                    <TextBlock Text="{Binding StartingTime}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+
+            </StackPanel>
+
+            <ListBox x:Name="ToursWithSameLocation" Margin="10,29,115,10" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button>
+                            <StackPanel Orientation="Horizontal">
+                                <Button></Button>
+                                <TextBlock Text="{Binding TourId}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding Description}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding Language}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding CurrentNumberOfTourists}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding MaxTourists}" FontWeight="Bold" Margin="0,0,5,0"/>
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Grid Margin="0,0,132,0">
+                <StackPanel Margin="0,0,127,0">
+                    <Label x:Name="FreePlacesLabel"  Content="{Binding FreePlaces}" Height="45" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+
+
+
+
+
+    </Grid>
+</Window>

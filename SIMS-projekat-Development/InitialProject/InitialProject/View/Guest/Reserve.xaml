@@ -1,0 +1,54 @@
+﻿<Window x:Class="InitialProject.View.Guest.Reserve"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.View.Guest"
+        mc:Ignorable="d"
+        Title="Reserve" Height="450" Width="800">
+    <Grid>
+        <StackPanel Background="LightGray" Margin="624,10,10,10">
+            <Label Content="Date Picker" FontWeight="Bold" Margin="0 0 0 5"/>
+            <DatePicker x:Name="StartDatePicker" Margin="0 0 0 5" Width="156"/>
+            <DatePicker x:Name="EndDatePicker" Margin="0 0 0 5" Height="25" Width="156"/>
+            <Label>Days</Label>
+            <TextBox PreviewTextInput="ResationDaysText" x:Name="ReserveDays" MaxLength="2" Margin="0 0 0 5" Width="156"/>
+            <Button Content="Show" Click="ShowDateClick" Margin="0 0 0 5" Width="75" Height="30"/>
+            <Button Content="Reserve" Click="ReserveClick" Margin="0 0 0 5" Width="75" Height="30"/>
+        </StackPanel>
+        <StackPanel
+                Background="Lavender"
+                x:Name="AccommodationStackPannel"
+                Orientation="Vertical" Margin="10,10,603,14">
+            <Label Content="Name"/>
+            <TextBlock Text="{Binding Name}" FontWeight="Bold" Background="AliceBlue" Margin="4" Height="23" Width="120"  HorizontalAlignment="Left"/>
+
+            <Label Content="Type"/>
+            <TextBlock Background="AliceBlue" Margin="4" FontWeight="Bold" Text="{Binding AccommodationType}" Height="23" Width="120" HorizontalAlignment="Left" />
+
+            <Label Content="Max Guests"/>
+            <TextBlock Text="{Binding MaxNumberOfGuests}" FontWeight="Bold" Background="AliceBlue" Margin="4" Height="23" Width="120" HorizontalAlignment="Left"/>
+
+            <Label Content="Minimal Reservation Period"/>
+            <TextBlock Text="{Binding MinimalReservationPeriod}" FontWeight="Bold" Background="AliceBlue" Margin="4" Height="23" Width="120" HorizontalAlignment="Left"/>
+
+            <Label Content="Cancle Period"/>
+            <TextBlock Text="{Binding CancelPeriod}" FontWeight="Bold" Background="AliceBlue" Margin="4" Height="23" Width="120" HorizontalAlignment="Left"/>
+
+
+            <Label Content="City"/>
+            <TextBlock Text="{Binding City}" FontWeight="Bold" Background="AliceBlue" Margin="4" Height="23" Width="120" HorizontalAlignment="Left"/>
+
+
+            <Label Content="Contry"/>
+            <TextBlock Text="{Binding Country}" FontWeight="Bold" Background="AliceBlue" Margin="4" Height="23" Width="120" HorizontalAlignment="Left"/>
+        </StackPanel>
+
+        <DataGrid x:Name="AvailableDates" IsReadOnly="True" Margin="202,8,181,12" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Check In Date" Binding="{Binding StartDate}" FontWeight="Bold"/>
+                <DataGridTextColumn Header="Check Out Date" Binding="{Binding EndDate}" FontWeight="Bold"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

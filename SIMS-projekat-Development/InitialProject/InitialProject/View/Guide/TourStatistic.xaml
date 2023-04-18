@@ -1,0 +1,117 @@
+﻿<Window x:Class="InitialProject.View.Guide.TourStatistic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InitialProject.View.Guide"
+        mc:Ignorable="d"
+        Title="TourStatistic" Height="450" Width="800">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Button 
+                Grid.Column="1"
+                x:Name="MostVisitedTourByYear"
+                Click="MostVisitedTourByYear_Click" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Margin="61,0,0,0">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.681"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                Most Visited Tour By Year
+            </Button>
+            <Button
+                x:Name="FinishedTours"
+                Click="FinishedTours_Click" Content="Finished Tours" Margin="421,0,79,0" RenderTransformOrigin="0.391,0.493"/>
+            <Button
+                x:Name="MostVisitedTour"
+                Click="MostVisitedTour_Click" Content="Most Visited Tour" Margin="550,0,50,0" Grid.ColumnSpan="2"/>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="180.667" />
+                <ColumnDefinition Width="19.333" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                x:Name="TourStatisticStackPannel"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Orientation="Vertical">
+
+                <Label>Year</Label>
+                <TextBox
+                    x:Name="YearStatistic"
+                    Margin="3"
+                    />
+
+
+                <Label>Tour Id</Label>
+                <TextBox
+                    x:Name="TourIdStatistic"
+                    Margin="3"
+                    />
+                <Button
+                    x:Name="ShowStatistic"
+                    Click="ShowStatistic_Click" Content="Show Statistic" RenderTransformOrigin="0.391,0.493" Height="50" Width="100"/>
+
+                <StackPanel>
+                    <Label>Tourists Under 18</Label>
+                    <TextBlock x:Name="TouristsUnder18" Text="{Binding TouristsUnder18, StringFormat='Tourists Under 18: {0}'}"/>
+                    <Label>Tourist Between 18 and 50</Label>
+                    <TextBlock x:Name="TouristsBetween18And50" Text="{Binding TouristsBetween18And50, StringFormat='Tourists Between 18 and 50: {0}'}"/>
+                    <Label>Tourists Over 50</Label>
+                    <TextBlock x:Name="TouristsOver50" Text="{Binding TouristsOver50, StringFormat='Tourists Above 50: {0}'}"/>
+                    <Label>Tourists With Voucher</Label>
+                    <TextBlock x:Name="TouristsWithVoucher" Text="{Binding TouristsWithVoucherPercentage, StringFormat='Tourists with Voucher: {0:F}%'}"/>
+                    <Label>Tourists Without Voucher</Label>
+                    <TextBlock x:Name="TouristsWithoutVoucher" Text="{Binding TouristsWithoutVoucherPercentage, StringFormat='Tourists without Voucher: {0:F}%'}"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <ListBox x:Name="ListOfTours" Margin="10,29,10,10" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Button>
+                            <StackPanel Orientation="Horizontal">
+                                <Button></Button>
+                                <TextBlock Text="{Binding TourId}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding Description}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding StartingDate}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding MaxTourists}" FontWeight="Bold" Margin="0,0,5,0"/>
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <Grid>
+                <StackPanel>
+                    <Label x:Name="FreePlacesLabel"  Content="{Binding FreePlaces}" Height="45" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
